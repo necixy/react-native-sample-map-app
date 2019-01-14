@@ -1,2 +1,2 @@
 # react-native-sample-map-app
-Sample app for demonstrating 
+A sample react native app integrating google map and showing sample CRUD operations.
