@@ -10,26 +10,37 @@ class MapViewComponent extends Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    // setTimeout(() => {
+    //   this.refs.map.fitToElements(true);
+    // }, 1000);
+  }
+
+  componentDidUpdate() {
+    this.fitMapElements();
+  }
+
+  fitMapElements() {
+    this.refs.map.fitToElements(true);
+  }
+
   render() {
     return (
       <View {...this.props} style={[s.container, this.props.style]}>
         <MapView
+          ref="map"
           style={s.map}
-          region={{
-            latitude: 52.5163,
-            longitude: 13.3777,
-            latitudeDelta: 0.015,
-            longitudeDelta: 0.0121
-          }}
+          onMapReady={this.fitMapElements.bind(this)}
         >
           {this.props.locations.map((location, index) => (
             <Marker
               key={`marker-${index}`}
               coordinate={{
                 latitude: location.lat,
-                longitude: location.long
+                longitude: location.lng
               }}
               title={location.name}
+              description={location.address}
             />
           ))}
         </MapView>

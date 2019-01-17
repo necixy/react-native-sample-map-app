@@ -20,5 +20,6 @@ Some decisions taken in application designs are as follow with their reasons:
 
 - Divided the app into several components for easy code maintenance and re-usability.
 - Inside `src/config` folder the keys, routes and theme is defined so they can be changed & reused (for theme) easily.
+- Google Geocoding API key is kept open on keys.js file, so when testing the app, you don't need to setup the key and billing on google dev console. In production app, keys should not be committed to git.
 - Wrapped the MapView inside the MapViewComponent and managing the map related sub components and functions through wrapper component so in future if we need to replace the 3rd party library, we can easily do so only in the MapViewComponent without altering the other components.
 - For fetching the geocoding results from google api, used fetch instead of axios since it's built right into react native and we don't need any customisation that fetch api doesn't offer for our current scenario. For more REST intense app, I usually prefer axios.

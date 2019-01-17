@@ -1,11 +1,17 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
+  list: {
+    marginTop: 10,
+    borderTopColor: "#ccc",
+    borderTopWidth: 1
+  },
   listItem: {
     flexDirection: "row",
     alignItems: "center",
-    minHeight: 50,
-    padding: 20,
+    minHeight: 40,
+    paddingVertical: 15,
+    paddingHorizontal: 20,
     marginTop: 2,
     borderBottomColor: "#ccc",
     borderBottomWidth: 1
@@ -22,7 +28,7 @@ export default StyleSheet.create({
   itemBtnIcon: {
     width: 25,
     height: 25,
-    margin: 5
+    marginHorizontal: 5
   },
   errorMsg: {
     marginTop: 50,

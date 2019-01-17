@@ -1,6 +1,16 @@
 import React, { Component } from "react";
-import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  Image,
+  Alert
+} from "react-native";
 import { PropTypes } from "prop-types";
+import { graphql } from "react-apollo";
+import locationsQuery from "../../graphql/queries/locations";
+import deleteLocation from "../../graphql/mutations/deleteLocation";
 import s from "./LocationsList.styles";
 
 class LocationsList extends Component {
@@ -13,7 +23,28 @@ class LocationsList extends Component {
     this.props.navigation.navigate("EditLocation", { location });
   }
 
-  deleteLocation(location) {}
+  promptDelete(location) {
+    Alert.alert(
+      "Confirm Delete",
+      `Are you sure you would like to delete location: ${location.name}`,
+      [
+        { text: "Cancel", style: "cancel" },
+        {
+          text: "Delete",
+          onPress: () => this.deleteLocation(location),
+          style: "destructive"
+        }
+      ],
+      { cancelable: false }
+    );
+  }
+
+  async deleteLocation(location) {
+    await this.props.mutate({
+      variables: { id: location.id },
+      refetchQueries: [{ query: locationsQuery }]
+    });
+  }
 
   renderErrorMsg(error) {
     return <Text style={s.errorMsg}>{error}</Text>;
@@ -34,7 +65,7 @@ class LocationsList extends Component {
           </TouchableOpacity>
           <TouchableOpacity
             style={s.itemBtn}
-            onPress={this.deleteLocation.bind(this, item)}
+            onPress={this.promptDelete.bind(this, item)}
           >
             <Image style={s.itemBtnIcon} source={require("./img/trash.png")} />
           </TouchableOpacity>
@@ -48,7 +79,7 @@ class LocationsList extends Component {
     return (
       <FlatList
         {...this.props}
-        style={this.props.style}
+        style={[this.props.style, s.list]}
         data={locations}
         keyExtractor={_keyExtractor}
         renderItem={this.renderListItem.bind(this)}
@@ -71,4 +102,4 @@ LocationsList.propTypes = {
   navigation: PropTypes.object.isRequired
 };
 
-export default LocationsList;
+export default graphql(deleteLocation)(LocationsList);

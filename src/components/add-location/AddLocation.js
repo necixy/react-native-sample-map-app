@@ -7,6 +7,9 @@ import {
   TouchableOpacity
 } from "react-native";
 import KEYS from "../../config/keys";
+import { graphql } from "react-apollo";
+import locationsQuery from "../../graphql/queries/locations";
+import addLocation from "../../graphql/mutations/addLocation";
 import s from "./AddLocationStyles";
 
 class AddLocation extends Component {
@@ -47,7 +50,16 @@ class AddLocation extends Component {
   }
 
   async addLocation(location) {
-    alert(location.formatted_address);
+    await this.props.mutate({
+      variables: {
+        name: this.state.searchText,
+        address: location.formatted_address,
+        lat: location.geometry.location.lat,
+        lng: location.geometry.location.lng
+      },
+      refetchQueries: [{ query: locationsQuery }]
+    });
+    this.props.navigation.pop();
   }
 
   renderErrorMsg() {
@@ -110,4 +122,4 @@ class AddLocation extends Component {
   }
 }
 
-export default AddLocation;
+export default graphql(addLocation)(AddLocation);
