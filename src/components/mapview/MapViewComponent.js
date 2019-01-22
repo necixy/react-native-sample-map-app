@@ -10,11 +10,7 @@ class MapViewComponent extends Component {
     this.state = {};
   }
 
-  componentDidMount() {
-    // setTimeout(() => {
-    //   this.refs.map.fitToElements(true);
-    // }, 1000);
-  }
+  componentDidMount() {}
 
   componentDidUpdate() {
     this.fitMapElements();
@@ -32,17 +28,19 @@ class MapViewComponent extends Component {
           style={s.map}
           onMapReady={this.fitMapElements.bind(this)}
         >
-          {this.props.locations.map((location, index) => (
-            <Marker
-              key={`marker-${index}`}
-              coordinate={{
-                latitude: location.lat,
-                longitude: location.lng
-              }}
-              title={location.name}
-              description={location.address}
-            />
-          ))}
+          {this.props.locations.map((location, index) => {
+            return (
+              <Marker
+                key={`marker-${index}`}
+                coordinate={{
+                  latitude: location.lat,
+                  longitude: location.lng
+                }}
+                title={location.name}
+                description={location.address}
+              />
+            );
+          })}
         </MapView>
       </View>
     );

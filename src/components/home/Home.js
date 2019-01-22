@@ -26,15 +26,20 @@ class Home extends Component {
     const { locations } = this.props.data;
     return locations ? (
       <View style={s.container}>
-        <MapViewComponent style={s.mapView} locations={locations} />
+        <MapViewComponent
+          testId="mapView"
+          style={s.mapView}
+          locations={locations}
+        />
         <LocationsList
+          testId="locationsList"
           style={s.locationsList}
           locations={locations}
           navigation={this.props.navigation}
         />
       </View>
     ) : (
-      <View style={s.spinnerContainer}>
+      <View testId="loadingView" style={s.spinnerContainer}>
         <ActivityIndicator />
       </View>
     );

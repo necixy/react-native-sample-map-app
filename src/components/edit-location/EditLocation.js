@@ -45,6 +45,7 @@ class EditLocation extends Component {
       <View style={s.container}>
         <View style={s.inputContainer}>
           <TextInput
+            testId="inputName"
             placeholder="Name"
             onChangeText={text => this.setState({ locationName: text })}
             value={this.state.locationName}
@@ -53,6 +54,7 @@ class EditLocation extends Component {
             style={s.textInput}
           />
           <TextInput
+            testId="inputAddress"
             ref="inputAddress"
             placeholder="Address"
             onChangeText={text => this.setState({ locationAddress: text })}

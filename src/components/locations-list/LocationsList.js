@@ -52,18 +52,20 @@ class LocationsList extends Component {
 
   renderListItem({ item, index }) {
     return (
-      <View key={index} style={s.listItem}>
+      <View testClass="listItem" key={`listItem-${index}`} style={s.listItem}>
         <View style={s.itemDetails}>
-          <Text>{item.name}</Text>
+          <Text testId="itemName">{item.name}</Text>
         </View>
         <View style={s.itemBtnContainer}>
           <TouchableOpacity
+            testId="itemEditBtn"
             style={s.itemBtn}
             onPress={this.editLocation.bind(this, item)}
           >
             <Image style={s.itemBtnIcon} source={require("./img/edit.png")} />
           </TouchableOpacity>
           <TouchableOpacity
+            testId="itemDeleteBtn"
             style={s.itemBtn}
             onPress={this.promptDelete.bind(this, item)}
           >
@@ -78,6 +80,7 @@ class LocationsList extends Component {
     const _keyExtractor = (item, index) => `location-${index}`;
     return (
       <FlatList
+        testId="list"
         {...this.props}
         style={[this.props.style, s.list]}
         data={locations}
@@ -99,7 +102,7 @@ class LocationsList extends Component {
 
 LocationsList.propTypes = {
   locations: PropTypes.array.isRequired,
-  navigation: PropTypes.object.isRequired
+  navigation: PropTypes.object
 };
 
 export default graphql(deleteLocation)(LocationsList);

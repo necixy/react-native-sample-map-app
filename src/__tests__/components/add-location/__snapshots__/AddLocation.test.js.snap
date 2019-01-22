@@ -1,0 +1,225 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddLocation Component Testing AddLocation Renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TextInput
+    allowFontScaling={true}
+    autoFocus={true}
+    onChangeText={[Function]}
+    onSubmitEditing={[Function]}
+    placeholder="Type in the address"
+    returnKeyType="search"
+    style={
+      Object {
+        "backgroundColor": "#f5f5f5",
+        "padding": 20,
+      }
+    }
+    testId="searchInput"
+    underlineColorAndroid="transparent"
+    value=""
+  />
+</View>
+`;
+
+exports[`AddLocation Component Testing AddLocation Renders correctly 2`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TextInput
+    allowFontScaling={true}
+    autoFocus={true}
+    onChangeText={[Function]}
+    onSubmitEditing={[Function]}
+    placeholder="Type in the address"
+    returnKeyType="search"
+    style={
+      Object {
+        "backgroundColor": "#f5f5f5",
+        "padding": 20,
+      }
+    }
+    testId="searchInput"
+    underlineColorAndroid="transparent"
+    value="Berlin"
+  />
+  <View
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "borderBottomColor": "#ccc",
+          "borderBottomWidth": 1,
+          "padding": 20,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#777",
+          }
+        }
+      >
+        Please tap on the desired address below to add to the map.
+      </Text>
+    </View>
+    <RCTScrollView
+      data={
+        Array [
+          Object {
+            "address_components": Array [
+              Object {
+                "long_name": "Berlin",
+                "short_name": "Berlin",
+                "types": Array [
+                  "locality",
+                  "political",
+                ],
+              },
+              Object {
+                "long_name": "Berlin",
+                "short_name": "Berlin",
+                "types": Array [
+                  "administrative_area_level_1",
+                  "political",
+                ],
+              },
+              Object {
+                "long_name": "Germany",
+                "short_name": "DE",
+                "types": Array [
+                  "country",
+                  "political",
+                ],
+              },
+            ],
+            "formatted_address": "Berlin, Germany",
+            "geometry": Object {
+              "bounds": Object {
+                "northeast": Object {
+                  "lat": 52.6754542,
+                  "lng": 13.7611175,
+                },
+                "southwest": Object {
+                  "lat": 52.338234,
+                  "lng": 13.088346,
+                },
+              },
+              "location": Object {
+                "lat": 52.52000659999999,
+                "lng": 13.404954,
+              },
+              "location_type": "APPROXIMATE",
+              "viewport": Object {
+                "northeast": Object {
+                  "lat": 52.6754542,
+                  "lng": 13.7611175,
+                },
+                "southwest": Object {
+                  "lat": 52.338234,
+                  "lng": 13.088346,
+                },
+              },
+            },
+            "place_id": "ChIJAVkDPzdOqEcRcDteW0YgIQQ",
+            "types": Array [
+              "locality",
+              "political",
+            ],
+          },
+        ]
+      }
+      disableVirtualization={false}
+      getItem={[Function]}
+      getItemCount={[Function]}
+      horizontal={false}
+      initialNumToRender={10}
+      keyExtractor={[Function]}
+      maxToRenderPerBatch={10}
+      numColumns={1}
+      onContentSizeChange={[Function]}
+      onEndReachedThreshold={2}
+      onLayout={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      renderItem={[Function]}
+      scrollEventThrottle={50}
+      stickyHeaderIndices={Array []}
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+      textId="locationsList"
+      updateCellsBatchingPeriod={50}
+      viewabilityConfigCallbackPairs={Array []}
+      windowSize={21}
+    >
+      <View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            accessible={true}
+            isTVSelectable={true}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "borderBottomColor": "#ccc",
+                "borderBottomWidth": 1,
+                "marginTop": 2,
+                "minHeight": 50,
+                "opacity": 1,
+                "padding": 20,
+              }
+            }
+          >
+            <Text
+              testId="textAddress"
+            >
+              Address: 
+              Berlin, Germany
+            </Text>
+            <Text
+              testId="textLat"
+            >
+              Latitude: 
+              52.52000659999999
+            </Text>
+            <Text
+              testId="textLng"
+            >
+              Longitude: 
+              13.404954
+            </Text>
+          </View>
+        </View>
+      </View>
+    </RCTScrollView>
+  </View>
+</View>
+`;

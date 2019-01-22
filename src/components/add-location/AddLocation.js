@@ -40,6 +40,10 @@ class AddLocation extends Component {
       `https://maps.googleapis.com/maps/api/geocode/json?&address=${searchText}&key=${GOOGLE_GEOCODING_KEY}`
     );
     const data = await response.json();
+    this.setGeoCodingResults(data);
+  }
+
+  setGeoCodingResults(data) {
     if (data.status == "OK") {
       this.setState({ locations: data.results, error_message: null });
     } else if (data.status == "ZERO_RESULTS") {
@@ -48,7 +52,6 @@ class AddLocation extends Component {
       this.setState({ locations: null, error_message: data.error_message });
     }
   }
-
   async addLocation(location) {
     await this.props.mutate({
       variables: {
@@ -76,9 +79,9 @@ class AddLocation extends Component {
         style={s.listItem}
         onPress={this.addLocation.bind(this, item)}
       >
-        <Text>Address: {item.formatted_address}</Text>
-        <Text>Latitude: {item.geometry.location.lat}</Text>
-        <Text>Longitude: {item.geometry.location.lng}</Text>
+        <Text testId="textAddress">Address: {item.formatted_address}</Text>
+        <Text testId="textLat">Latitude: {item.geometry.location.lat}</Text>
+        <Text testId="textLng">Longitude: {item.geometry.location.lng}</Text>
       </TouchableOpacity>
     );
   }
@@ -94,6 +97,7 @@ class AddLocation extends Component {
           </Text>
         </View>
         <FlatList
+          textId="locationsList"
           style={s.list}
           data={locations}
           keyExtractor={_keyExtractor}
@@ -107,8 +111,11 @@ class AddLocation extends Component {
     return (
       <View style={s.container}>
         <TextInput
+          testId="searchInput"
           placeholder="Type in the address"
-          onChangeText={text => this.setState({ searchText: text })}
+          onChangeText={async text => {
+            await this.setState({ searchText: text });
+          }}
           value={this.state.searchText}
           returnKeyType="search"
           autoFocus={true}
