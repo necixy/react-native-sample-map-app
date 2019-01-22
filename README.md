@@ -35,13 +35,13 @@ Some decisions taken in application designs are as follow with their reasons:
 # Guideline Questions & their Answers:
 
 - How do you handle configuration values? What if those values change?
-  Ans. All the configuration values are defined in config/keys.js for react native app and in .env(for localhost) and in config_vars(in heroku/production). Changing them is easy and app/backend adapts to them.
+- - Ans. All the configuration values are defined in config/keys.js for react native app and in .env(for localhost) and in config_vars(in heroku/production). Changing them is easy and app/backend adapts to them.
 
 - What happens if we encounter an error with the third-party API integration?
-  Ans. The only third party API is Google GeoCoding API which is only used in the AddLocation component of ReactNative app. In case of error the error message is displayed.
+- - Ans. The only third party API is Google GeoCoding API which is only used in the AddLocation component of ReactNative app. In case of error the error message is displayed.
 
 - Will it also break our application, or are they handled accordingly?
-  Ans. They don't break our application. In case of geocoding api failure, the error message is displayed on app's page without breaking the app.
+- - Ans. They don't break our application. In case of geocoding api failure, the error message is displayed on app's page without breaking the app.
 
 - Now we will need to change the third-party geocoder API to another one. How can we change our current solution so that we can make this change as seamless as possible? Or how will we change (or refactor) our solution so that any future changes with the third-party integration is only done in isolation?
-  Ans. At present only the 3rd party google geocoding api is used in AddLocation component of ReactNative app. So changing it is easy as it requires only one comopnent to be updated. Since this was test app, the api is integrated right into react-native app but we could also wrap the 3rd party api inside the backend so that app talks to our backend and backend talks to 3rd party api, this approach is allow us to change the 3rd party api to be changed easily from backend only but making 2 calls would also make the api little slower. I chose the current approach so that api calls can be faster and can be changed easily in the app.
+ - - Ans. At present only the 3rd party google geocoding api is used in AddLocation component of ReactNative app. So changing it is easy as it requires only one comopnent to be updated. Since this was test app, the api is integrated right into react-native app but we could also wrap the 3rd party api inside the backend so that app talks to our backend and backend talks to 3rd party api, this approach is allow us to change the 3rd party api to be changed easily from backend only but making 2 calls would also make the api little slower. I chose the current approach so that api calls can be faster and can be changed easily in the app.
